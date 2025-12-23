@@ -8,3 +8,6 @@
 /dataSources.local.xml
 # Zeppelin ignored files
 /ZeppelinRemoteNotebooks/
+# Data
+data/raw/*.csv
+data/processed/*.csv
