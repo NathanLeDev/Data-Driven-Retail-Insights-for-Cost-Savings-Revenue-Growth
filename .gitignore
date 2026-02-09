@@ -1,0 +1,12 @@
+# Ignore large data files
+*.parquet
+*.csv
+*.zip
+
+# Ignore data directories
+data/
+processed/
+raw/
+
+# Ignore notebook junk
+.ipynb_checkpoints/
