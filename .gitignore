@@ -1,12 +1,31 @@
-# Ignore large data files
+# ===============================
+# Large data files
+# ===============================
 *.parquet
 *.csv
 *.zip
 
-# Ignore data directories
+# ===============================
+# Data directories
+# ===============================
 data/
 processed/
 raw/
 
-# Ignore notebook junk
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.pyc
 .ipynb_checkpoints/
+
+# ===============================
+# IDE / Editors
+# ===============================
+.idea/
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+/ZeppelinRemoteNotebooks/
