@@ -1,0 +1,145 @@
+table df_full
+	lineageTag: 79bfac0d-a3dd-4ecb-98dc-e69a35c826c6
+
+	column order_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d79bd64-0261-42a2-8e04-3316ebf337a4
+		summarizeBy: sum
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2edc1d55-2e4b-41df-84c3-2bc2dcd6a84e
+		summarizeBy: sum
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column add_to_cart_order
+		dataType: int64
+		formatString: 0
+		lineageTag: ac7f0a39-e185-44ca-b655-9308d9e6f7f7
+		summarizeBy: sum
+		sourceColumn: add_to_cart_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column reordered
+		dataType: int64
+		formatString: 0
+		lineageTag: 615de0bd-c7ba-4a3a-81af-c886d6a5d16e
+		summarizeBy: sum
+		sourceColumn: reordered
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 290178b8-da3b-47fa-8153-222518aaa8f3
+		summarizeBy: sum
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column eval_set
+		dataType: string
+		lineageTag: 0475efbe-240c-4fef-9c1d-45f0981dfa20
+		summarizeBy: none
+		sourceColumn: eval_set
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_number
+		dataType: int64
+		formatString: 0
+		lineageTag: dceeba6b-1a17-4060-b0dc-568486a34391
+		summarizeBy: sum
+		sourceColumn: order_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_dow
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a4bc12a-68c0-4689-b0ac-8aa604e06992
+		summarizeBy: sum
+		sourceColumn: order_dow
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_hour_of_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 93534eb9-c40e-4d48-b9d4-adde57f86634
+		summarizeBy: sum
+		sourceColumn: order_hour_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_prior_order
+		dataType: string
+		lineageTag: f0052e3e-76b7-4a41-b1fa-776bdb34b1c6
+		summarizeBy: none
+		sourceColumn: days_since_prior_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: e1a4baa3-7bf4-45a5-ae17-6a6f9d36a439
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column aisle_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 89a74092-b827-49f7-9c1c-d6c217905ab1
+		summarizeBy: sum
+		sourceColumn: aisle_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column department_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 61fabb1b-d116-4c32-b9d3-1b70f358e608
+		summarizeBy: sum
+		sourceColumn: department_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column aisle
+		dataType: string
+		lineageTag: d66544ba-7590-4fb2-b345-8047979c2bcf
+		summarizeBy: none
+		sourceColumn: aisle
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: dde3c765-937f-4e0d-bc5c-5526edc7dbd1
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	partition df_full = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Armand\Documents\DSTI_School\Projetma\Data-Driven-Retail-Insights-for-Cost-Savings-Revenue-Growth\data\processed\df_full.csv"),[Delimiter=",", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"order_id", Int64.Type}, {"product_id", Int64.Type}, {"add_to_cart_order", Int64.Type}, {"reordered", Int64.Type}, {"user_id", Int64.Type}, {"eval_set", type text}, {"order_number", Int64.Type}, {"order_dow", Int64.Type}, {"order_hour_of_day", Int64.Type}, {"days_since_prior_order", type text}, {"product_name", type text}, {"aisle_id", Int64.Type}, {"department_id", Int64.Type}, {"aisle", type text}, {"department", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_ResultType = Table
+
