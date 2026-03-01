@@ -7,13 +7,12 @@ import streamlit as st
 import polars as pl
 import pandas as pd
 from pathlib import Path
-
 from config import DATA_PATH
 
 
 def get_data_path() -> Path:
     """Get the absolute path to the data file."""
-    return Path(__file__).parent / DATA_PATH
+    return DATA_PATH
 
 
 @st.cache_data(ttl=3600, show_spinner="Loading aggregated statistics...")

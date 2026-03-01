@@ -85,7 +85,9 @@ ASSOCIATION_RULES = [
 DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 # Data paths
-DATA_PATH = "data/processed/df_full.parquet"
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).parent.parent
+DATA_PATH = PROJECT_ROOT / "data" / "processed" / "df_full.parquet"
 REPORTS_PATH = "reports"
 
 # App configuration
